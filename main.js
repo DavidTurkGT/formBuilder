@@ -78,34 +78,52 @@ var formData = [
   }
 ];
 
-var form = document.querySelector(".form");
-console.log(form);
-var input_array = [];
+function createFormElements(formData){
+  var input_array = [];
 
-for (var i = 0; i < formData.length; i++){
-  //Filter for select boxes, text areas, and everything else
-  if(formData[i].type === "select"){
-    // console.log("This is a select box!");
-    var element = document.createElement("select");
-    for(var j = 0; j < Data)
-  }
-  else if (formData[i].type === "textarea") {
-    // console.log("This is a text area!");
-    var element = document.createElement("textarea");
-  }
-  else {
-    // console.log("This is an input!");
-    var element = document.createElement("input");
+  for (var i = 0; i < formData.length; i++){
+    //Filter for select boxes, text areas, and everything else
+    if(formData[i].type === "select"){
+      var element = document.createElement("select");
+      var initOpt = document.createElement("option");
+      initOpt.value = "";
+      initOpt.textContent = "Select Language...";
+      element.appendChild(initOpt);
+    }
+    else if (formData[i].type === "textarea") {
+      var element = document.createElement("textarea");
+    }
+    else {
+      var element = document.createElement("input");
+    }
     element.type = formData[i].type;
     element.placeholder = formData[i].label;
+    //TODO: implement the font-awesome icons in placeholder
+    // element.placeholder = buildFaIcon(formData[i].icon, formData[i].label);
     element.id = formData[i].id;
+    for(var j = 0; j < formData[i].options.length; j++){
+      var opt = document.createElement("option");
+      opt.value = formData[i].options[j].value;
+      opt.textContent = formData[i].options[j].label;
+      element.appendChild(opt);
+    }
+    input_array.push(element);
   }
-  input_array.push(element);
+  return input_array;
+}
+function addFormElements(input_array){
+  var form = document.querySelector(".form");
+  for(var i = 0; i < input_array.length; i++){
+    form.appendChild(input_array[i]);
+    form.appendChild(document.createElement("br"));
+  }
 }
 
-console.log(input_array);
 
-for(var i = 0; i < input_array.length; i++){
-  form.appendChild(input_array[i]);
-  form.appendChild(document.createElement("br"));
+var inputs = createFormElements(formData);
+addFormElements(inputs);
+
+//FIXME
+function buildFaIcon(icon, label){
+  return '<i class="fa '+icon+'"></i> '+label;
 }

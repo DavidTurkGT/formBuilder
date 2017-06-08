@@ -1,0 +1,57 @@
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+form {
+  width: 50vw;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+heading {
+    background-color: #2886CF;
+    color: white;
+    padding: 1rem;
+    flex: 1 100%;
+    box-shadow: 0px 5px 10px #ddd;
+    font-size: 1.2em;
+    font-weight: 100;
+}
+
+form{
+  box-shadow: 0px 5px 10px #555;
+  border-radius: 5px;
+}
+
+.form {
+  display: block;
+  flex: 1 100%;
+  border: none;
+}
+
+.form *{
+  margin: 0.5rem;
+  padding: 7px;
+  width: 95%;
+}
+
+select{
+  padding: 10px;
+}
+
+.submit_button{
+  background-color: #C4DDF2;
+  flex: 1 100%;
+  border: none;
+  margin: 0;
+  padding: 1rem;
+}
+
+button{
+  background-color: #2886CF;
+  color: white;
+  border: none;
+  padding: 10px;
+}
