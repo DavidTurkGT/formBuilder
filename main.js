@@ -77,12 +77,16 @@ var formData = [
     "options": []
   }
 ];
+//This is a hard code of Unicode translations for Font-awesome icons.  It's static. I'm sorry :(
+var iconUni = ["&#xf007;","&#xf007;","&#xf0e0;","&#xf0ac;","","&#xf086;","&#xf10b;","&#xf095;"]
+
 
 function createFormElements(formData){
   var input_array = [];
 
   for (var i = 0; i < formData.length; i++){
     //Filter for select boxes, text areas, and everything else
+    // element.placeholder = buildFaIcon(formData[i].icon, formData[i].label);
     if(formData[i].type === "select"){
       var element = document.createElement("select");
       var initOpt = document.createElement("option");
@@ -97,9 +101,8 @@ function createFormElements(formData){
       var element = document.createElement("input");
     }
     element.type = formData[i].type;
-    element.placeholder = formData[i].label;
     //TODO: implement the font-awesome icons in placeholder
-    // element.placeholder = buildFaIcon(formData[i].icon, formData[i].label);
+    element.placeholder = formData[i].label;
     element.id = formData[i].id;
     for(var j = 0; j < formData[i].options.length; j++){
       var opt = document.createElement("option");
@@ -114,6 +117,14 @@ function createFormElements(formData){
 function addFormElements(input_array){
   var form = document.querySelector(".form");
   for(var i = 0; i < input_array.length; i++){
+    //Create and append the FontAwesome icon
+    if(formData[i].icon){
+      console.log("Creating icon", formData[i].label);
+      var icon = document.createElement("i");
+      icon.classList.add("fa",formData[i].icon);
+      console.log(icon);
+      form.appendChild(icon);
+    }
     form.appendChild(input_array[i]);
     form.appendChild(document.createElement("br"));
   }

@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: FontAwesome;
 }
 
 form {
@@ -25,6 +25,10 @@ form{
   border-radius: 5px;
 }
 
+input{
+  font-family: FontAwesome;
+}
+
 .form {
   display: block;
   flex: 1 100%;
@@ -32,9 +36,11 @@ form{
 }
 
 .form *{
-  margin: 0.5rem;
+  margin: 0rem;
   padding: 7px;
+  padding-left: 25px;
   width: 95%;
+  max-width: 95%;
 }
 
 select{
@@ -54,4 +60,14 @@ button{
   color: white;
   border: none;
   padding: 10px;
+}
+
+.fa{
+  position: relative;
+  top: 28px;
+  left:-19px;
+}
+
+select#user-language {
+    margin-top: 2rem;
 }
